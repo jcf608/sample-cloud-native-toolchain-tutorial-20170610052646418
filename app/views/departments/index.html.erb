@@ -1,0 +1,18 @@
+<h3>Departments</h3>
+<% if @departments.empty? %>
+	No departments found.
+<% else %>
+	<% @departments.each_with_index do |department| %>
+		<%= department.id%>) <%= department.name %> <%= department.location %> 
+		<hr>
+	<% end %>
+<% end %>
+
+<% 
+		@department = Department.new 
+		fake_name = Faker::Address	
+		@department.name = fake_name.city  
+		@department.location = fake_name.street_address		
+%>			
+
+<%= render partial: 'new_edit', department: @department %>

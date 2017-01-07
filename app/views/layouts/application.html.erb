@@ -9,6 +9,8 @@
   </head>
 
   <body>
+		<%= link_to "Home", root_path %> || <%= link_to "Add a department", new_department_path %> || <%= link_to "Show all departments", departments_path %> || <%= link_to "Add a user", new_user_path %> || <%= link_to "Show all users", users_path %><hr><br>
+	
     <%= yield %>
   </body>
 </html>
