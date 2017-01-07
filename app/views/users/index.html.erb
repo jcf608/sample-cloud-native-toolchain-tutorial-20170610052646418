@@ -1,0 +1,11 @@
+<h3>Users</h3>
+<% if @users.empty? %>
+	No users found.
+<% else %>
+	<% @users.each do |user| %>
+		<%= user.first_name %><%= user.last_name %>
+		<hr>
+	<% end %>
+<% end %>
+<% @user = User.new %>
+<%= render partial: 'new_edit', user: @user %>

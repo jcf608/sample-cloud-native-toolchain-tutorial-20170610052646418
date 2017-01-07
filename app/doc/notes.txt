@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/39110540/rails-server-issues - now using ipv6, so have to go to http://127.0.0.1:3000/
