@@ -2,10 +2,15 @@
 <% if @users.empty? %>
 	No users found.
 <% else %>
-	<% @users.each do |user| %>
-		<%= user.first_name %><%= user.last_name %>
+	<% @users.each_with_index do |user| %>
+		<%= user.id%>) <%= user.first_name %> <%= user.last_name %> <%= image_tag user.avatar.url(:thumb) %>
 		<hr>
 	<% end %>
 <% end %>
+
 <% @user = User.new %>
+<% fake_name = Faker::Name										%>			
+<% @user.first_name = fake_name.first_name  %>
+<% @user.last_name = fake_name.last_name		%>			
+
 <%= render partial: 'new_edit', user: @user %>
