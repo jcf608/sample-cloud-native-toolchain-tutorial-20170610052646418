@@ -4,15 +4,23 @@
 <% else %>
 	<% @departments.each_with_index do |department| %>
 		<%= department.id%>) <%= department.name %> <%= department.location %> 
+		<h4>Users in department</p>
+		<% department.users.each do |user| %>
+			<br><%= user.id%>) <%= user.first_name %> <%= user.last_name %> <%= image_tag user.avatar.url(:thumb) %>
+		<% end %>
 		<hr>
 	<% end %>
 <% end %>
 
 <% 
 		@department = Department.new 
-		fake_name = Faker::Address	
-		@department.name = fake_name.city  
-		@department.location = fake_name.street_address		
+		fake_address = Faker::Address	
+		@department.name = fake_address.city  
+		@department.location = fake_address.street_address
+		2.times do
+			fake_name = Faker::Name	
+			@department.users.build(first_name: fake_name.first_name, last_name: fake_name.last_name)
+		end		
 %>			
 
-<%= render partial: 'new_edit', department: @department %>
+<%= render partial: 'new_edit', :locals => {department: @department} %>

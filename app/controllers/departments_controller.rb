@@ -19,6 +19,6 @@ class DepartmentsController < ApplicationController
   # Be sure to update your create() and update() controller methods.
 
   def department_params
-    params.require(:department).permit(:name, :location, :user_attributes =>[:last_name, :avatar])
+    params.require(:department).permit(:name, :location, :users_attributes =>[:last_name, :avatar])
   end
 end

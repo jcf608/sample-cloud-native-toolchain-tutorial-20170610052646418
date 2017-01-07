@@ -1,5 +1,14 @@
-<%= form_for @department, html: { multipart: true } do |f| %>
+<%= form_for department, html: { multipart: true } do |f| %>
 	<%= f.label :name %><%= f.text_field :name %><br>
 	<%= f.label :location %> <%= f.text_field :location %><br>
+	<%= f.fields_for :users do |u| %>
+	
+		<%= u.label :first_name %><%= u.text_field :first_name %><br>
+		<%= u.label :last_name %> <%= u.text_field :last_name %><br>
+	  <%= u.file_field :avatar %>
+		<%= (image_tag @user.avatar.url) rescue 'No image' %>
+		<br>
+	
+	<% end %>
 	<%= f.submit 'Submit' %>
 <% end %>
